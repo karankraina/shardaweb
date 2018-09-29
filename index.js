@@ -1,10 +1,19 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+const PORT = process.env.PORT || 5000
+var express = require('express');
+var app = express();
+const contentful = require('contentful');
+var exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+app.get('/home1', (req, res) => {
+    res.render('home');
+})
+app.get('/home2', (req, res) => {
+    res.render('home2');
+})
+app.listen(8080, () => {
+    console.log("Server Created at 8080")
+})
