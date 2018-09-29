@@ -7,12 +7,10 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.get('/home1', (req, res) => {
+app.get('/', (req, res) => {
     res.render('home');
 })
-app.get('/home2', (req, res) => {
-    res.render('home2');
-})
+
 app.listen(PORT, () => {
     console.log("Server Created at 8080")
 })
