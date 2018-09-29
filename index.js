@@ -2,7 +2,6 @@
 const PORT = process.env.PORT || 5000
 var express = require('express');
 var app = express();
-const contentful = require('contentful');
 var exphbs = require('express-handlebars');
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
