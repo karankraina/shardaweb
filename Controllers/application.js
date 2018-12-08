@@ -51,16 +51,16 @@ function runapplication(req, res){
                 vaakhtemp.audio = item.fields.audio.fields.file.url
             }
             if (item.fields.englishTransliteration !== undefined){
-                vaakhtemp.englishTransliteration = documentToHtmlString(item.fields.englishTransliteration)
+                vaakhtemp.englishTransliteration = document.documentToHtmlString(item.fields.englishTransliteration)
             }
             if (item.fields.wordMeaning !== undefined){
-                vaakhtemp.wordMeaning = documentToHtmlString(item.fields.wordMeaning)
+                vaakhtemp.wordMeaning = document.documentToHtmlString(item.fields.wordMeaning)
             }
             if (item.fields.summary !== undefined){
-                vaakhtemp.summary = documentToHtmlString(item.fields.summary)
+                vaakhtemp.summary = document.documentToHtmlString(item.fields.summary)
             }
             if (item.fields.additionalCommentary !== undefined){
-                vaakhtemp.additionalCommentary = documentToHtmlString(item.fields.additionalCommentary)
+                vaakhtemp.additionalCommentary = document.documentToHtmlString(item.fields.additionalCommentary)
             }
             vaakharray.push(vaakhtemp);
         })
