@@ -1,99 +1,71 @@
- <div class="container-fluid" id="buttonset">
-        <div class="row">
-            <div class="col-xs-6 mybtn">
-                <div class="button_text animated bounceIn" id="btn1">
-                    <h4><img class="fluid" src="icons/st.png">Sharda</h4>
-                    <!-- <p>Sharda Web Tutorial</p> -->
-                </div>
-            </div>
-            <div class="col-xs-6 mybtn animated bounceIn" id="btn2">
-                <div class="button_text">
-                    <h4><img class="fluid" src="icons/st.png">Lall Vaakh</h4>
-                    <!-- <p><i>This is Under Development</i></p> -->
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 mybtn animated bounceIn" id="btn3">
-                <div class="button_text">
-                    <h4><img class="fluid" src="icons/fl.png">Translator</h4>
-                    <!-- <p>Translate Hindi to Sharda</p> -->
-                </div>
-            </div>
-            <div class="col-xs-6 mybtn animated bounceIn" id="btn4">
-                <div class="button_text">
-                    <h4><img class="fluid" src="icons/hn.png">About Us</h4>
-                    <!-- <p>Developer</p> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <hr><br>
-    <!-- Carousel Plugin -->
-    <div class="container">
-        <h4>Our Gallery</h4>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+		
+		<div class="container-fluid" id="mycaro">
+		<h3>{{data.title}}</h3>
+			<div class="row">
+				<div class="col-sm-12 mb-4">
+					<div id="demo" class="carousel slide" data-ride="carousel">
 
-                <div class="item active">
-                    <img src="images/1.jpg" alt="" style="width:100%;">
-                    <!-- <div class="carousel-caption">
-                            <h3>Los Angeles</h3>
-                            <p>LA is always so much fun!</p>
-                        </div> -->
-                </div>
-
-                <div class="item">
-                    <img src="images/2.jpg" alt="" style="width:100%;">
-                    <!-- <div class="carousel-caption">
-                            <h3>Chicago</h3>
-                            <p>Thank you, Chicago!</p>
-                        </div> -->
-                </div>
-
-                <div class="item">
-                    <img src="images/3.jpg" alt="" style="width:100%;">
-                    <!-- <div class="carousel-caption">
-                            <h3>New York</h3>
-                            <p>We love the Big Apple!</p>
-                        </div> -->
-                </div>
-
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" style="color:#FFF" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" style="color:#FFF" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- Carousel Ends -->
-    <br>
-    <hr><br>
-
-    <div class="jumbotron">
-        <h1 style="text-align: center">Thank You !</h1>
-        <p>Thank you for downloading our app. Kindly share this. Kindly, share the link with your friends.
-        </p>
-        <div style="text-align: center">
-            <button type="button" class="btn-primary">Copy Link</button>
-        </div>
-    </div>
-
-
-    </div>
+					  <!-- Indicators -->
+					  <ul class="carousel-indicators">
+						<li data-target="#demo" data-slide-to="0" class="active"></li>
+						<li data-target="#demo" data-slide-to="1"></li>
+					  </ul>
+					  
+					  <!-- The slideshow -->
+					  <div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="card bg-default">
+								<div class="card-body"><img class="img-responsive" src="{{data.hindiImage}}" alt="Hindi" width="1100" height="500"></div>
+								<div class="card-footer">Hindi</div>
+							</div>						  
+						</div>
+						<div class="carousel-item">
+						  <div class="card bg-default">
+								<div class="card-body"><img class="img-responsive" src="{{data.shardaImage}}" alt="Sharda" width="1100" height="500"></div>
+								<div class="card-footer">Sharda</div>
+							</div>
+						</div>
+						
+					  </div>
+					  
+					  <!-- Left and right controls -->
+					  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					  </a>
+					  <a class="carousel-control-next" href="#demo" data-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					  </a>
+					</div><!----Caro ended-------->
+				</div><!----col ended-------->
+				<audio controls>
+					  <source src="{{data.audio}}" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+				<div class="col-sm-12 mb-4">
+					<div class="card bg-default">
+						<div class="card-header">English Transliteration</div>
+						<div class="card-body">{{{data.englishTransliteration}}}</div>
+					</div>
+				</div><!----col ended-------->
+				<div class="col-sm-12 mb-4">
+					<div class="card bg-default">
+						<div class="card-header">Word Meaning</div>
+						<div class="card-body">{{{data.wordMeaning}}}</div>
+							</div>
+				</div><!----col ended-------->
+				<div class="col-sm-12 mb-4">
+					<div class="card bg-default">
+						<div class="card-header">Summary</div>
+						<div class="card-body">{{{data.summary}}}</div>
+					</div>
+				</div><!----col ended-------->
+				<div class="col-sm-12 mb-4">
+					<div class="card bg-default">
+						<div class="card-header">Additional Commentary</div>
+						<div class="card-body">{{{data.additionalCommentary}}}
+</div>
+					</div>
+				</div><!----col ended-------->
+			</div><!----row ended-------->
+		</div>	<!----container-fluid ended-------->
