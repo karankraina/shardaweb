@@ -2,6 +2,7 @@ const PORT = process.env.PORT || 5000
 var express = require('express');
 var app = express();
 const contentful = require('contentful');
+const document = require('@contentful/rich-text-html-renderer')
 var exphbs = require('express-handlebars');
 var url = require('url');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
@@ -50,16 +51,16 @@ function runapplication(req, res){
                 vaakhtemp.audio = item.fields.audio.fields.file.url
             }
             if (item.fields.englishTransliteration !== undefined){
-                vaakhtemp.englishTransliteration = item.fields.englishTransliteration
+                vaakhtemp.englishTransliteration = documentToHtmlString(item.fields.englishTransliteration)
             }
             if (item.fields.wordMeaning !== undefined){
-                vaakhtemp.wordMeaning = item.fields.wordMeaning
+                vaakhtemp.wordMeaning = documentToHtmlString(item.fields.wordMeaning)
             }
             if (item.fields.summary !== undefined){
-                vaakhtemp.summary = item.fields.summary
+                vaakhtemp.summary = documentToHtmlString(item.fields.summary)
             }
             if (item.fields.additionalCommentary !== undefined){
-                vaakhtemp.additionalCommentary = item.fields.additionalCommentary
+                vaakhtemp.additionalCommentary = documentToHtmlString(item.fields.additionalCommentary)
             }
             vaakharray.push(vaakhtemp);
         })
