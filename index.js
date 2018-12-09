@@ -14,9 +14,8 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
     var k = url.parse(req.url)
     //console.log(k)
+    application.homebar(req, res)
     
-    //console.log(typeof k.name);
-    res.render('home');
 });
 // Vaakh Code
 app.get('/vaakh', (req, res) => {

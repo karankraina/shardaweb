@@ -31,6 +31,10 @@ const client = contentful.createClient({
     accessToken: 'e4cb8c0f3b9d5370ace3361bedfe93a3d72d714f681811fb3973b03b8c86baba'
 })
 
+function homebar(req, res){
+    res.render('homepage1', {layout: 'homepage'});
+}
+
 function runapplication(req, res){
     const vaakharray = [];
     client.getEntry('2OwwF5tykgG0IASeo2auAi')
@@ -72,5 +76,6 @@ function runapplication(req, res){
      }).catch(console.error)
 }
 module.exports = {
-    runapplication
+    runapplication,
+    homebar
 }
