@@ -412,11 +412,14 @@
       <script type="text/javascript" src="../vendor/js/bootstrap.min.js"></script>
       <!-- MDB core JavaScript -->
       <script type="text/javascript" src="../vendor/js/mdb.min.js"></script>
+      {{!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> --}}
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
       <!-- Initializations -->
       <script type="text/javascript">
         // Animations initialization
         new WOW().init();
-        $('.view').on('click', () => {
+        $('.view').on('touchstart', () => {
           // $('#video.bg').play();
           alert('view tapped')
         })
