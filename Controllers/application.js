@@ -28,6 +28,10 @@ const client = contentful.createClient({
     //environment: '<environment_id>', // defaults to 'master' if not set
     accessToken: 'e4cb8c0f3b9d5370ace3361bedfe93a3d72d714f681811fb3973b03b8c86baba'
 })
+function demo(req, res){
+    res.render('demo', {layout: 'homepage'});
+}
+
 
 function homebar(req, res){
     if (req.sessions !== undefined) {
@@ -86,6 +90,7 @@ function runapplication(req, res){
 module.exports = {
     runapplication,
     homebar,
+    demo,
     checkfun,
     signup
 }

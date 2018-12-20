@@ -7,6 +7,12 @@ const db = require('./database')
 router.get('/', function (req, res) {
     application.homebar(req, res)
 });
+router.get('/demo', function (req, res) {
+    application.demo(req, res)
+});
+router.get('/get_data', function (req, res) {
+    db.getdata(req, res)
+});
 router.get('/check', checkauth, function (req, res) {
     application.signup(req, res)
 });

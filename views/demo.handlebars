@@ -1,0 +1,28 @@
+<table id="example" class="display" style="width:100%">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Field 1</th>
+			<th>Field 2</th>
+			<th>Field 3</th>
+			<th>Field 4</th>
+		</tr>
+	</thead>
+</table>
+
+<script>
+	$(document).ready(function () {
+		$('#example').DataTable({
+			ajax: {
+				url: "/get_data",
+				dataSrc: "",
+				//dataType: 'JSON',
+				success(d){
+					console.log(d[2])
+				}, 
+				cache: false
+			}
+		});
+	});
+	
+</script>
