@@ -4,10 +4,8 @@ var app = express();
 const contentful = require('contentful');
 const document = require('@contentful/rich-text-html-renderer')
 var exphbs = require('express-handlebars');
-var url = require('url');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-app.use(express.static(__dirname + '/public'));
 
 
 
@@ -32,7 +30,17 @@ const client = contentful.createClient({
 })
 
 function homebar(req, res){
-    res.render('homepage1', {layout: 'homepage'});
+    if (req.sessions !== undefined) {
+        console.log(req.sessions)
+    }
+    res.render('home', {layout: 'homepage'});
+}
+
+function checkfun(req, res){
+    res.render('homepage1', {layout: 'homepage'})
+}
+function signup(req, res){
+    res.render('sign', {layout: 'test'})
 }
 
 function runapplication(req, res){
@@ -77,5 +85,7 @@ function runapplication(req, res){
 }
 module.exports = {
     runapplication,
-    homebar
+    homebar,
+    checkfun,
+    signup
 }

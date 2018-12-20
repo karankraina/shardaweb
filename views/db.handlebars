@@ -1,0 +1,32 @@
+<br>
+<br><br>
+<br><br>
+<br>
+
+<textarea name="query" id="query" cols="30" rows="10"></textarea>
+<button type="submit" onclick="sendQ()">SEND</button>
+<div id="result">
+
+</div>
+
+<script>
+	function sendQ() {
+		var quer = $('#query').val();
+		console.log(quer)
+		$.ajax({
+			type: "POST",
+			url: '/db',
+			data: {
+				'que': quer,
+			},
+			success: function (res) {
+				console.log(res[0])
+				if(res === 'success'){
+alert('Request Sent')
+				}
+				
+			},
+			//dataType: 'string'
+		});
+	}
+</script>
