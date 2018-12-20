@@ -10,13 +10,13 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded());
 const { Client } = require('pg');
 
-const client = new Client({
-    // connectionString: process.env.DATABASE_URL,
-    connectionString: 'postgres://crmpgwoagempzj:995d13a456c8659e1055b493a6baab551aa07c00338fa02d818bd928320bccb0@ec2-23-21-201-12.compute-1.amazonaws.com:5432/da9vkfi2bdthr2',
-    ssl: true,
-});
+// const client = new Client({
+//     // connectionString: process.env.DATABASE_URL,
+//     connectionString: 'postgres://crmpgwoagempzj:995d13a456c8659e1055b493a6baab551aa07c00338fa02d818bd928320bccb0@ec2-23-21-201-12.compute-1.amazonaws.com:5432/da9vkfi2bdthr2',
+//     ssl: true,
+// });
 
-client.connect();
+// client.connect();
 
 app.use('/', routes)
 
