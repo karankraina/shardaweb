@@ -15,10 +15,12 @@
 		$('#example').DataTable({
 			ajax: {
 				url: "/get_data",
-				dataSrc: "",
+				// dataSrc: "",
 				//dataType: 'JSON',
 				success(d){
-					console.log(d[2])
+					console.log(d)
+					myJsonData = d;
+        populateDataTable(myJsonData);
 				}, 
 				cache: false
 			}
