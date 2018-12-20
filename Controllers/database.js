@@ -12,18 +12,19 @@ const client = new Client({
     ssl: true,
 });
 
-client.connect();
+
 function check(req, res){
     const que = req.body.que;
     console.log(que)
-    
+    client.connect();
     client.query(`${que}`).then((result) => {
         console.log('Command Run Successfully : ' + result.rows )
         res.send(result.rows)
-        // client.end()
+        client.end()
     }).catch((err) => {
         console.log(err)
         console.log(err.error)
+        client.end()
         res.send('error')
     })
     
