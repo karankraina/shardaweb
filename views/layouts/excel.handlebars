@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
+	<title>Excel Example</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.5.0/css/keyTable.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/autofill/2.3.2/css/autoFill.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/excel/editor.dataTables.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css"> -->
+	<link rel="stylesheet" type="text/c	ss" href="../vendor/excel/demo.css">
+	<style type="text/css" class="init">
+		div.DTE_Inline input {
+			border: none;
+			background-color: transparent;
+			padding: 0 !important;
+			font-size: 90%;
+		}
+
+		div.DTE_Inline input:focus {
+			outline: none;
+			background-color: transparent;
+		}
+	</style>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/keytable/2.5.0/js/dataTables.keyTable.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/autofill/2.3.2/js/dataTables.autoFill.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../vendor/excel/dataTables.editor.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../vendor/excel/shCore.js"></script>
+	<script type="text/javascript" language="javascript" src="../vendor/excel/demo.js"></script>
+	<script type="text/javascript" language="javascript" src="../vendor/excel/editor-demo.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+
+
+		var editor; // use a global for the submit and return data rendering in the examples
+
+		$(document).ready(function () {
+			editor = new $.fn.dataTable.Editor({
+				ajax: "/api/staff",
+				table: "#example",
+				fields: [{
+					label: "First name:",
+					name: "first_name"
+				}, {
+					label: "Last name:",
+					name: "last_name"
+				}, {
+					label: "Position:",
+					name: "position"
+				}, {
+					label: "Office:",
+					name: "office"
+				}, {
+					label: "Extension:",
+					name: "extn"
+				}, {
+					label: "Start date:",
+					name: "start_date",
+					type: "datetime"
+				}, {
+					label: "Salary:",
+					name: "salary"
+				}
+				]
+			});
+			var table = $('#example').DataTable({
+				dom: "Bfrtip",
+				ajax: "/api/staff",
+				order: [[1, 'asc']],
+				columns: [
+					{
+						data: null,
+						defaultContent: '',
+						className: 'select-checkbox',
+						orderable: false
+					},
+					{ data: "first_name" },
+					{ data: "last_name" },
+					{ data: "position" },
+					{ data: "office" },
+					{ data: "start_date" },
+					{ data: "salary", render: $.fn.dataTable.render.number(',', '.', 0, '$') }
+				],
+				autoFill: {
+					columns: ':not(:first-child)',
+					editor: editor
+				},
+				keys: {
+					columns: ':not(:first-child)',
+					editor: editor
+				},
+				select: {
+					style: 'os',
+					selector: 'td:first-child',
+					blurable: true
+				},
+				buttons: [
+					{ extend: "create", editor: editor },
+					{ extend: "edit", editor: editor },
+					{ extend: "remove", editor: editor },
+					{
+						extend: 'collection',
+						text: 'Export',
+						buttons: [
+							{ extend: "copy"},
+                            { extend: "excel", title: 'DataFile' },
+							{ extend: "csv", title: 'DataFile' },
+							{ extend: "pdf", title: 'DataFile' }
+						]
+					}
+				]
+			});
+		});
+
+
+
+	</script>
+</head>
+
+<body class="dt-example node">
+	<div class="container">
+		<table id="example" class="display" rowspacing="2" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th></th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Position</th>
+					<th>Office</th>
+					<th width="18%">Start date</th>
+					<th>Salary</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</body>
+
+</html>
