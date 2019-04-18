@@ -34,9 +34,6 @@ function demo(req, res){
 
 
 function homebar(req, res){
-    if (req.sessions !== undefined) {
-        console.log(req.sessions)
-    }
     res.render('home', {layout: 'homepage'});
 }
 
